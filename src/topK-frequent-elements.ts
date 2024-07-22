@@ -10,8 +10,6 @@ function topKFrequent(nums: number[], k: number): number[] {
     }
   }
 
-  console.log(map);
-
   const mapReverse: Map<number, number[]> = new Map<number, number[]>();
   map.forEach((value, key) => {
     if (mapReverse.has(value)) {
@@ -23,10 +21,8 @@ function topKFrequent(nums: number[], k: number): number[] {
     }
   });
 
-  console.log(mapReverse);
-
   const frequency: number[] = Array.from(mapReverse.keys());
-  frequency.sort((a, b) => a - b).reverse();
+  frequency.sort((a, b) => b - a);
 
   for (let i = 0; i < frequency.length; i++) {
     res = res.concat(mapReverse.get(frequency[i]) as number[]);
